@@ -1,0 +1,9 @@
+[package]
+name = "libparity"
+version = "0.1.0"
+# the Rust minimum in run.py's dependencies() assumes edition 2021; keep in sync
+edition = "2021"
+license = "MPL-2.0 AND MIT"
+description = "Rust port of the libparity foot-parity engine (batch path)"
+
+[dependencies]

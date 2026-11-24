@@ -1,0 +1,8 @@
+#!/bin/sh
+# Builds the port when needed and runs it with the port protocol (CONFORMANCE.md).
+set -e
+dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+# per platform: the checkout may be shared between hosts (a mounted container, say)
+target=${CARGO_TARGET_DIR:-$dir/target/$(uname -s)-$(uname -m)}
+cargo build --release --quiet --manifest-path "$dir/Cargo.toml" --target-dir "$target" >&2
+exec "$target/release/libparity-port" "$@"

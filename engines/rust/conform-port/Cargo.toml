@@ -1,0 +1,16 @@
+[package]
+name = "conform-port"
+version = "0.1.0"
+# the Rust minimum in run.py's dependencies() assumes edition 2021; keep in sync
+edition = "2021"
+license = "MPL-2.0 AND MIT"
+description = "libparity conformance port: cases as NDJSON on stdin, results on stdout"
+
+[[bin]]
+name = "libparity-port"
+path = "src/main.rs"
+
+[dependencies]
+libparity = { path = "../libparity" }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }

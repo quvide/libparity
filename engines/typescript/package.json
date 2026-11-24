@@ -1,0 +1,43 @@
+{
+  "name": "libparity",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MPL-2.0 AND MIT",
+  "type": "module",
+  "description": "Foot parity and tech detection engine for 4-panel dance charts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "src",
+    "LICENSE-smeditor"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "parity": "tsx tests/cli.ts",
+    "conform": "tsx conformance/cli.ts",
+    "test": "tsx tests/cli.ts",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tests/tsconfig.json",
+    "build": "node build.mjs",
+    "prepare": "node build.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0"
+  }
+}

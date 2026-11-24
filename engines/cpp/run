@@ -1,0 +1,12 @@
+#!/bin/sh
+# Builds the port when needed and runs it with the port protocol (CONFORMANCE.md).
+set -e
+dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+# per platform: the checkout may be shared between hosts (a mounted container, say)
+build=${CPP_BUILD_DIR:-$dir/build/$(uname -s)-$(uname -m)}
+mkdir -p "$build"
+if ! { cmake -S "$dir" -B "$build" -DCMAKE_BUILD_TYPE=Release && cmake --build "$build" --parallel; } >"$build/run.log" 2>&1; then
+  cat "$build/run.log" >&2
+  exit 1
+fi
+exec "$build/parity-conform" "$@"

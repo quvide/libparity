@@ -1,0 +1,7 @@
+/.logs/
+/corpus/
+/engines/cpp/build/
+/engines/rust/target/
+/engines/typescript/.tmp-fixture-ssc/
+/engines/typescript/dist/
+/engines/typescript/node_modules/
